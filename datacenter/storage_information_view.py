@@ -14,7 +14,9 @@ def get_duration(visit):
         return (now - entered_time).total_seconds()
 
 def format_duration(duration):
-    formated_duration = (f'{int((duration // 3600))}ч {int((duration % 3600 // 60))}м')
+    seconds_in_hour = 3600
+    seconds_in_minutes = 60
+    formated_duration = (f'{int((duration // seconds_in_hour))}ч {int((duration % seconds_in_hour // seconds_in_minutes))}м')
     return formated_duration
 
 def storage_information_view(request):
@@ -29,6 +31,6 @@ def storage_information_view(request):
         non_closed_visits.append(visit_information)
 
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)

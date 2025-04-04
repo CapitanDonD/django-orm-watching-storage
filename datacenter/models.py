@@ -3,11 +3,9 @@ import django
 from django.db import models
 
 def is_visit_long(duration, minutes=60):
-    mins = duration//60
-    if mins > minutes:
-        return True
-    else:
-        return False
+    seconds_in_minutes = 60
+    minutes_duration = duration//seconds_in_minutes
+    return minutes_duration > minutes
 
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)

@@ -15,7 +15,7 @@ def passcard_info_view(request, passcode):
         visit_duration = get_duration(visit)
         passcard_visit = {
             'entered_at': visit.entered_at,
-            'duration': get_duration(visit),
+            'duration': visit_duration,
             'is_strange': is_visit_long(visit_duration)
         }
         this_passcard_visits.append(passcard_visit)

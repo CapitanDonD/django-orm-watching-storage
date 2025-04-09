@@ -7,7 +7,7 @@ from datacenter.models import Visit
 def get_duration(visit):
     entered_time = django.utils.timezone.localtime(visit.entered_at)
     if visit.leaved_at:
-        time_of_stay = (django.utils.timezone.localtime(visit.leaved_at) - entered_time).seconds
+        time_of_stay = (django.utils.timezone.localtime(visit.leaved_at) - entered_time).total_seconds
         return time_of_stay
     else:
         now = django.utils.timezone.localtime()
